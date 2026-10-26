@@ -1,0 +1,43 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+    <File Path=".gitignore" />
+    <File Path=".editorconfig" />
+  </Folder>
+  <Folder Name="/docs/">
+    <File Path="docs/project-vision.md" />
+  </Folder>
+  <Folder Name="/TaskManager.Client/">
+    <File Path="TaskManager.Client/package.json" />
+    <File Path="TaskManager.Client/pnpm-lock.yaml" />
+    <File Path="TaskManager.Client/pnpm-workspace.yaml" />
+    <File Path="TaskManager.Client/tsconfig.json" />
+    <File Path="TaskManager.Client/vite.config.ts" />
+    <File Path="TaskManager.Client/index.html" />
+    <File Path="TaskManager.Client/tsconfig.app.json" />
+    <File Path="TaskManager.Client/tsconfig.node.json" />
+  </Folder>
+  <Folder Name="/TaskManager.Client/src/">
+    <File Path="TaskManager.Client/src/App.tsx" />
+    <File Path="TaskManager.Client/src/main.tsx" />
+    <File Path="TaskManager.Client/src/index.css" />
+  </Folder>
+  <Folder Name="/TaskManager.Client/src/components/">
+    <File Path="TaskManager.Client/src/components/.gitkeep" />
+  </Folder>
+  <Folder Name="/TaskManager.Client/src/features/">
+    <File Path="TaskManager.Client/src/features/.gitkeep" />
+  </Folder>
+  <Folder Name="/TaskManager.Client/src/services/">
+    <File Path="TaskManager.Client/src/services/.gitkeep" />
+  </Folder>
+  <Folder Name="/TaskManager.Client/src/store/">
+    <File Path="TaskManager.Client/src/store/.gitkeep" />
+  </Folder>
+  <Folder Name="/TaskManager.Client/src/types/">
+    <File Path="TaskManager.Client/src/types/.gitkeep" />
+  </Folder>
+  <Project Path="TaskManager.Api/TaskManager.Api.csproj" />
+  <Project Path="TaskManager.Core/TaskManager.Core.csproj" />
+  <Project Path="TaskManager.Infrastructure/TaskManager.Infrastructure.csproj" />
+</Solution>

@@ -1,46 +1,65 @@
-# 🚀 Task & Project Management System with AI
+# TaskManager
 
-Система управления IT-проектами и задачами с интерактивной Kanban-доской и интеллектуальным ассистентом на базе **Groq API (Llama 3.1)**.
+Пет-проект: ASP.NET Core Web API (.NET 10), React и TypeScript.
+Рабочий корень: `D:\TaskManager\TaskManager`. Открывайте `TaskManager.slnx`.
+Git охватывает всё решение.
 
----
+## Структура и зависимости
 
-## 🛠 Технологический стек
+- **TaskManager.Api** — Controllers, DTOs, Middlewares, Program.cs. Ссылается на Core и Infrastructure.
+- **TaskManager.Core** — Entities, Interfaces, Enums. Не зависит от API и EF Core.
+- **TaskManager.Infrastructure** — Data/Configurations, Data/Scripts, Repositories, Migrations. Ссылается на Core.
+- **TaskManager.Client** — React + TypeScript + Vite. Обращается к API по HTTP.
+  - src/components — общие компоненты.
+  - src/features — функциональные модули (доска, задачи, проекты).
+  - src/services — HTTP-вызовы.
+  - src/store — состояние приложения.
+  - src/types — TypeScript-типы.
+  - src/App.tsx — корневой компонент; в дальнейшем здесь подключается роутинг.
+  - src/main.tsx — точка входа.
+- **docs/project-vision.md** — исходное описание планов, а не перечень готовых возможностей.
 
-* **Backend:** C# / .NET 10, ASP.NET Core Web API, Entity Framework Core
-* **Database:** MS SQL Server (реляционная база данных)
-* **Frontend:** React, TypeScript, Material UI / Ant Design, `@hello-pangea/dnd`
-* **AI Integration:** Groq API (`llama-3.1-8b`)
+Пустые папки сохранены через `.gitkeep`. После добавления кода их можно удалить.
+В Обозревателе решений клиент показан как папка решения с основными файлами.
+Для просмотра всех его каталогов откройте папку клиента в редакторе.
 
----
+## Запуск
 
-## 📐 Архитектура базы данных
+Нужны .NET SDK 10 и Node.js 22.12+ и pnpm 11.25.0 (установка: npm install -g pnpm@11.25.0). Backend нацелен на `net10.0`.
 
-База данных состоит из 9 нормализованных таблиц с настроенными внешними ключами (`FOREIGN KEY`), ограничениями (`CHECK`, `UNIQUE`) и индексами для быстродействия:
+Из корня решения:
 
-### Таблицы системы:
-1. **`Organization`** — компании и организации.
-2. **`Positions`** — справочник должностей сотрудников.
-3. **`Roles`** — системные роли пользователей (`Admin`, `Manager`, `Developer`, `Director`).
-4. **`Users`** — учетные записи пользователей (хэши паролей, email, навыки `Skills`).
-5. **`Project`** — проекты организаций с дедлайнами и статусами.
-6. **`Tasks`** — задачи для Kanban-доски (`To Do`, `In Progress`, `Done`) с приоритетами.
-7. **`SubTasks`** — чек-листы внутри задач.
-8. **`Comments`** — комментарии и обсуждения задач.
-9. **`TaskHistory`** — лог изменений и аудит действий по задачам.
+```powershell
+dotnet restore TaskManager.slnx
+dotnet build TaskManager.slnx
+dotnet run --project TaskManager.Api --launch-profile http
+```
 
----
+Тестовый endpoint: `http://localhost:5218/weatherforecast`.
 
-## ✨ Интеллектуальный функционал (ИИ)
+В отдельном терминале:
 
-* **Декомпозиция задач:** Автоматическая генерация подзадач (`SubTasks`) по описанию задачи.
-* **Подбор исполнителя:** Анализ навыков сотрудников (`Skills`) и их текущей загрузки.
-* **Суммаризация:** Генерация кратких итогов по длинным веткам комментариев (`Comments`).
-* **Оценка рисков:** Прогнозирование вероятности срыва дедлайнов.
+```powershell
+cd TaskManager.Client
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
----
+Клиент: `http://localhost:5173`. Vite проксирует `/api` и `/weatherforecast` на backend при разработке. Маршруты `/api` пока не реализованы.
+Для production адрес API и размещение клиента настраиваются отдельно.
 
-## 🚀 Локальный запуск
+Проверка клиента: `pnpm typecheck`. Сборка: `pnpm build`.
+Конфигурация основана на официальном [шаблоне Vite React TypeScript](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts).
 
-1. Склонируйте репозиторий:
-   ```bash
-   git clone [https://github.com/WunderWaffe128/task-management-system.git](https://github.com/WunderWaffe128/task-management-system.git)
+## Дальнейшая работа
+
+Подготовлены структура, проектные ссылки и минимальная стартовая страница клиента. Сохранён тестовый WeatherForecast API.
+
+1. Создать девять сущностей по `TaskManager.Infrastructure/Data/Scripts/init_schema.sql`.
+2. Добавить перечисления и контракты репозиториев в Core.
+3. Подключить EF Core и SQL Server, создать DbContext и конфигурации.
+4. Настроить строку подключения через User Secrets или переменные окружения, затем миграции.
+5. Реализовать API и клиентские модули.
+
+SQL-скрипт сохранён без изменений и автоматически не выполняется.
+EF Core, DbContext, миграции, React Router и бизнес-функции пока не реализованы.

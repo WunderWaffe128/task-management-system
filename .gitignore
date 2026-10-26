@@ -7,7 +7,7 @@ obj/
 *.user
 *.userosscache
 *.sln.docstates
-appsettings.Development.json
+# Development settings are tracked; keep secrets in User Secrets.
 
 ## Node.js / React
 node_modules/
@@ -26,3 +26,10 @@ yarn-error.log*
 *.ldf
 .DS_Store
 Thumbs.db
+# Local secrets and tooling
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.nuget/
+.pnpm-store/
