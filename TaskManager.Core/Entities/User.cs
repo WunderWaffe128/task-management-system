@@ -23,7 +23,8 @@ namespace TaskManager.Core.Entities
         public ICollection<TaskItem> CreatedTasks { get; set; } = new List<TaskItem>();
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
         public ICollection<TaskHistory> TaskHistories { get; set; } = new List<TaskHistory>();                                                                                    //ti lox
-
+        public DateTime CreatedAt { get; set; }
+        public bool IsActive { get; set; } = true;
 
 
     }

@@ -7,7 +7,7 @@ namespace TaskManager.Core.Entities
     public class TaskItem
     {
         public int Id { get; set; }
-        public int? ProjectId { get; set; }
+        public int ProjectId { get; set; }
         public int? AssigneeId { get; set; }
         public int? AuthorId { get; set; }
         public string Title { get; set; } = string.Empty;
@@ -15,7 +15,7 @@ namespace TaskManager.Core.Entities
         public string Status { get; set; } = "To Do";
         public string Priority { get; set; } = "Medium";
         public DateTime Deadline { get; set; }
-        public Project? Project { get; set; }
+        public Project Project { get; set; } = null!;
         public User? Assignee { get; set; }
         public User? Author { get; set; }
         public ICollection<SubTask> SubTasks { get; set; } = new List<SubTask>();

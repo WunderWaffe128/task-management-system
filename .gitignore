@@ -33,3 +33,6 @@ Thumbs.db
 *.tsbuildinfo
 .nuget/
 .pnpm-store/
+/TaskManager.Api/Controllers/OrganizationsController.cs
+# Local development secrets
+secrets.json
